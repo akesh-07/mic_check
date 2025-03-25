@@ -1,0 +1,40 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin" // ✅ Correct order
+}
+
+android {
+    namespace "com.example.untitled" // ✅ Corrected syntax
+
+    compileSdk 34 // ✅ Manually specify compileSdk
+
+    ndkVersion "23.1.7779620" // ✅ Set a valid NDK version or remove if not needed
+
+    defaultConfig {
+        applicationId "com.example.untitled"
+        minSdkVersion 24 // ✅ Manually specify minSdkVersion (Adjust if needed)
+        targetSdkVersion 34 // ✅ Set targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source "../.."
+}
